@@ -13,7 +13,7 @@ public class EHostelApplication {
 
         Dotenv dotenv = Dotenv.configure()
                 .ignoreIfMissing()
-                .load();
+                .load(); //
 
         dotenv.entries().forEach(entry ->
                 System.setProperty(entry.getKey(), entry.getValue())
