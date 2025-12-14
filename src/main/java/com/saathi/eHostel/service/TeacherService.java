@@ -1,12 +1,8 @@
 package com.saathi.eHostel.service;
 
-import com.saathi.eHostel.dto.StudentDTO;
 import com.saathi.eHostel.dto.TeacherDTO;
-import com.saathi.eHostel.entity.Student;
 import com.saathi.eHostel.entity.Teacher;
-import com.saathi.eHostel.mappers.StudentMapper;
 import com.saathi.eHostel.mappers.TeacherMapper;
-import com.saathi.eHostel.repository.StudentRepository;
 import com.saathi.eHostel.repository.TeacherRepository;
 import org.springframework.stereotype.Service;
 
@@ -44,13 +40,23 @@ public class TeacherService implements ITeacherService {
         return entitiesToDto;
     }
 
-    @Override
-    public boolean deleteTeacher(Long id) throws Exception {
-        return false;
-    }
 
     @Override
-    public TeacherDTO getTeacherById(Long id) throws IOException {
-        return null;
+    public TeacherDTO getTeacherById(Long id) throws Exception {
+        Teacher entity = teacherRepository.findById(id).orElse(null);
+        TeacherDTO dto = TeacherMapper.toDTO(entity);
+        return dto;
+    }
+
+
+    @Override
+    public TeacherDTO deleteTeacher(Long id) throws Exception {
+        Teacher entity = teacherRepository.findById(id).orElse(null);
+        if(entity == null) {
+            return null;
+        }
+        TeacherDTO dto = TeacherMapper.toDTO(entity);
+        teacherRepository.deleteById(id);
+        return dto;
     }
 }

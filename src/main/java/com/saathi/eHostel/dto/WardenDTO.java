@@ -12,5 +12,5 @@ public class WardenDTO {
     private long id;
     private String name;
     private String email;
-    private String number;
+    private String phone;
 }

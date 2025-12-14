@@ -19,7 +19,7 @@ public class TeacherMapper {
     {
         return Teacher.builder()
                 .name(teacherDTO.getName())
-                .id(teacherDTO.getId())
+               // .id(teacherDTO.getId())
                 .email(teacherDTO.getEmail())
                 .phone(teacherDTO.getPhone())
                 .department(teacherDTO.getDepartment())

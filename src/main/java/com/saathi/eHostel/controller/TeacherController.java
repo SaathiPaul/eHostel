@@ -1,7 +1,5 @@
 package com.saathi.eHostel.controller;
 
-
-import com.saathi.eHostel.dto.StudentDTO;
 import com.saathi.eHostel.dto.TeacherDTO;
 import com.saathi.eHostel.entity.Teacher;
 import com.saathi.eHostel.repository.TeacherRepository;
@@ -24,9 +22,6 @@ public class TeacherController {
 
     @PostMapping
     public TeacherDTO addTeacher(@RequestBody TeacherDTO teacherDTO) throws Exception {
-        // you will receive a studentDTO
-        // YOU WILL PASS THE DTO to the service layer
-        // the service layer will return you back a DTO
         TeacherDTO dto = teacherService.addTeacher(teacherDTO);
         return dto;
     }
@@ -39,6 +34,20 @@ public class TeacherController {
     }
 
 
+    @GetMapping("/{id}")
+    public TeacherDTO getTeacherById(@PathVariable Long id) throws Exception {
+        TeacherDTO teacherDTO = teacherService.getTeacherById(id);
+        return teacherDTO;
+    }
 
+
+    @DeleteMapping("/{id}")
+    public String deleteTeacher(@PathVariable Long id) throws Exception {
+        TeacherDTO dto = teacherService.deleteTeacher(id);
+        if(dto == null) {
+            return "Teacher not found.";
+        }
+        return "Teacher deleted successfully";
+    }
 
 }

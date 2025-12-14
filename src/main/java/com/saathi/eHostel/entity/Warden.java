@@ -17,6 +17,6 @@ public class Warden {
     private Long id;
     private String name;
     private String email;
-    private String number;
+    private String phone;
 
 }
