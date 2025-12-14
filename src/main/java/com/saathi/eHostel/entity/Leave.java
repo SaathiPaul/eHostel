@@ -15,20 +15,13 @@ import java.time.LocalDate;
 public class Leave {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long id;
     private long studentCollegeRegistrationNo;
-    private long studentUniversityRollNo;
-
     private LocalDate fromDate;
     private LocalDate toDate;
-
     private String reason;
-
     private String status;
-
     private long approvedByWarden;
     private long approvedByTeacher;
-
     private LocalDate appliedDate;
 }

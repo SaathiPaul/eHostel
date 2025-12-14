@@ -1,15 +1,15 @@
 package com.saathi.eHostel.service;
 
 import com.saathi.eHostel.dto.ComplaintDTO;
-import com.saathi.eHostel.dto.StudentDTO;
 import com.saathi.eHostel.entity.Complaint;
 import com.saathi.eHostel.mappers.ComplaintMapper;
 import com.saathi.eHostel.repository.ComplaintRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Service
 public class ComplaintService implements IComplaintService {
     private final ComplaintRepository complaintRepository;
 
