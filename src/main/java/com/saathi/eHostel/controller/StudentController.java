@@ -11,13 +11,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/students")
 public class StudentController {
+
     private final IStudentService studentService;
-    public StudentController(IStudentService _studentService)
-    {
+
+    public StudentController(IStudentService _studentService) {
         this.studentService = _studentService;
     }
 
-    // Add Student
+    // Register or add a Student
     @PostMapping
     public StudentDTO addStudent(@RequestBody StudentDTO studentDTO) throws Exception {
         // you will receive a studentDTO
@@ -27,7 +28,8 @@ public class StudentController {
         return dto;
     }
 
-    @PostMapping
+    // Login a student using email and password
+    @PostMapping("/login")
     public AuthenticateResponseDTO authenticateStudent(@RequestBody AuthenticateDTO dto) throws Exception {
         return studentService.authenticateStudent(dto);
     }
@@ -46,15 +48,13 @@ public class StudentController {
         return studentDTO;
     }
 
-
     // Delete Student
     @DeleteMapping("/{id}")
     public String deleteStudent(@PathVariable Long id) throws Exception {
         StudentDTO dto = studentService.deleteStudent(id);
-        if(dto == null) {
+        if (dto == null) {
             return "Student not found.";
         }
         return "Student deleted successfully";
     }
-
 }

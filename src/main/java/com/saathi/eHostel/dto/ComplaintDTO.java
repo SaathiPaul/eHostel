@@ -1,8 +1,6 @@
 package com.saathi.eHostel.dto;
 
 import lombok.*;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-
 import java.time.LocalDateTime;
 
 @Getter
@@ -12,8 +10,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class ComplaintDTO {
     private Long id;
+    private Long createdByStudentId;
     private String message;
     private String status;
     private LocalDateTime createdAt;
-
 }

@@ -1,13 +1,10 @@
 package com.saathi.eHostel.controller;
 
+import com.saathi.eHostel.dto.AuthenticateDTO;
+import com.saathi.eHostel.dto.AuthenticateResponseDTO;
 import com.saathi.eHostel.dto.TeacherDTO;
-import com.saathi.eHostel.entity.Teacher;
-import com.saathi.eHostel.repository.TeacherRepository;
 import com.saathi.eHostel.service.ITeacherService;
-import com.saathi.eHostel.service.TeacherService;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -15,8 +12,7 @@ import java.util.List;
 public class TeacherController {
     private final ITeacherService teacherService;
 
-    public TeacherController(ITeacherService teacherService)
-    {
+    public TeacherController(ITeacherService teacherService) {
         this.teacherService = teacherService;
     }
 
@@ -26,6 +22,10 @@ public class TeacherController {
         return dto;
     }
 
+    @PostMapping("/login")
+    public AuthenticateResponseDTO authenticateTeacher(@RequestBody AuthenticateDTO dto) throws Exception {
+        return teacherService.authenticateTeacher(dto);
+    }
 
     @GetMapping
     public List<TeacherDTO> getAllTeachers() throws Exception {
@@ -40,14 +40,12 @@ public class TeacherController {
         return teacherDTO;
     }
 
-
     @DeleteMapping("/{id}")
     public String deleteTeacher(@PathVariable Long id) throws Exception {
         TeacherDTO dto = teacherService.deleteTeacher(id);
-        if(dto == null) {
+        if (dto == null) {
             return "Teacher not found.";
         }
         return "Teacher deleted successfully";
     }
-
 }

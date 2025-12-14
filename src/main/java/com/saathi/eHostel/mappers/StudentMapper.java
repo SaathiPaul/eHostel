@@ -18,7 +18,7 @@ public class StudentMapper {
                 .phone(student.getPhone())
                 .guardianPhone(student.getGuardianPhone())
                 .roomNumber(student.getRoomNumber())
-                .password(student.getPassword())
+//                .password(student.getPassword())
                 .build();
     }
 

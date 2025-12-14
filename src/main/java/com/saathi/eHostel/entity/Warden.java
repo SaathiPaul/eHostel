@@ -1,6 +1,5 @@
 package com.saathi.eHostel.entity;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 

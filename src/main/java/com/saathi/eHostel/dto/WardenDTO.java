@@ -7,7 +7,6 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class WardenDTO {
     private Long id;
     private String name;

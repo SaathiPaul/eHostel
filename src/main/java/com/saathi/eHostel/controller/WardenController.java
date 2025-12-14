@@ -1,22 +1,26 @@
 package com.saathi.eHostel.controller;
 
+import com.saathi.eHostel.dto.AuthenticateDTO;
+import com.saathi.eHostel.dto.AuthenticateResponseDTO;
 import com.saathi.eHostel.dto.WardenDTO;
 import com.saathi.eHostel.service.IWardenService;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/wardens")
-
-
 public class WardenController {
 
     private final IWardenService wardenService;
 
     public WardenController(IWardenService _wardenService) {
         this.wardenService = _wardenService;
+    }
+
+    // Login Warden
+    @PostMapping("/login")
+    public AuthenticateResponseDTO authenticateWarden(@RequestBody AuthenticateDTO dto) throws Exception {
+        return wardenService.authenticateWarden(dto);
     }
 
     // Add Warden
@@ -50,4 +54,3 @@ public class WardenController {
         return "Warden deleted successfully";
     }
 }
-

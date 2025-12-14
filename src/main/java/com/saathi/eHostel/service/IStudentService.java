@@ -3,8 +3,6 @@ package com.saathi.eHostel.service;
 import com.saathi.eHostel.dto.AuthenticateDTO;
 import com.saathi.eHostel.dto.AuthenticateResponseDTO;
 import com.saathi.eHostel.dto.StudentDTO;
-import jdk.jfr.Category;
-
 import java.io.IOException;
 import java.util.List;
 

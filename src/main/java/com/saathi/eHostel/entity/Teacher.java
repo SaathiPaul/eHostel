@@ -1,6 +1,5 @@
 package com.saathi.eHostel.entity;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,7 +10,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "teachers")
-
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

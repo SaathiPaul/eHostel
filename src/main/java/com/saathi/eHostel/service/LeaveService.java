@@ -1,26 +1,19 @@
 package com.saathi.eHostel.service;
 
 import com.saathi.eHostel.dto.LeaveDTO;
-
 import com.saathi.eHostel.entity.Leave;
-
 import com.saathi.eHostel.mappers.LeaveMapper;
-
 import com.saathi.eHostel.repository.LeaveRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class LeaveService implements ILeaveService {
 
     private final LeaveRepository leaveRepository;
 
-    public LeaveService(LeaveRepository leaveRepository)
-    {
+    public LeaveService(LeaveRepository leaveRepository) {
         this.leaveRepository = leaveRepository;
     }
 
@@ -44,7 +37,7 @@ public class LeaveService implements ILeaveService {
         // return the List of leaveDTO
         List<Leave> allLeaveEntities = leaveRepository.findAll();
         List<LeaveDTO> entitiesToDto = new ArrayList<>();
-        for(int i = 0; i < allLeaveEntities.size(); i++) {
+        for (int i = 0; i < allLeaveEntities.size(); i++) {
             Leave l = allLeaveEntities.get(i);
             LeaveDTO converted = LeaveMapper.toDTO(l);
             entitiesToDto.add(converted);
@@ -52,50 +45,43 @@ public class LeaveService implements ILeaveService {
         return entitiesToDto;
     }
 
+    @Override
+    public LeaveDTO getLeaveById(Long leaveId) throws Exception {
+        // find the student entity in the repository/database;
+        // convert to leaveDTO if found;
+        // return the dto
+        Leave entity = leaveRepository.findById(leaveId).orElse(null);
+        LeaveDTO dto = LeaveMapper.toDTO(entity);
+        return dto;
+    }
 
     @Override
     public List<LeaveDTO> getLeavesByStudentId(Long studentId) throws Exception {
-            // find the student entity in the repository/database;
-            // convert to leaveDTO if found;
-            // return the dto
-            List<Leave> leaveEntities = leaveRepository.findByStudentId(studentId);
-            List<LeaveDTO> entitiesToDto = new ArrayList<>();
-            for (int i = 0; i < leaveEntities.size(); i++) {
+        // find the student entity in the repository/database;
+        // convert to leaveDTO if found;
+        // return the dto
+        List<Leave> leaveEntities = leaveRepository.findByStudentCollegeRegistrationNo(studentId);
+        List<LeaveDTO> entitiesToDto = new ArrayList<>();
+        for (int i = 0; i < leaveEntities.size(); i++) {
             Leave l = leaveEntities.get(i);
             LeaveDTO converted = LeaveMapper.toDTO(l);
             entitiesToDto.add(converted);
-            }
-            return entitiesToDto;
-
+        }
+        return entitiesToDto;
     }
 
     @Override
-    public LeaveDTO getLeaveById(Long leaveId) throws Exception {
-            // find the student entity in the repository/database;
-            // convert to leaveDTO if found;
-            // return the dto
-            Leave entity = leaveRepository.findById(leaveId).orElse(null);
-            LeaveDTO dto = LeaveMapper.toDTO(entity);
-            return dto;
+    public boolean deleteLeave(Long leaveId) {
+        return false;
     }
-
 
     @Override
     public LeaveDTO approveLeaveByWarden(Long leaveId, Long wardenId) {
         return null;
     }
 
-
-
     @Override
     public LeaveDTO approveLeaveByTeacher(Long leaveId, Long teacherId) {
         return null;
-    }
-
-
-
-    @Override
-    public boolean deleteLeave(Long leaveId) {
-        return false;
     }
 }

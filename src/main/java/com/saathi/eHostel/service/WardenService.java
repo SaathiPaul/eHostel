@@ -1,25 +1,50 @@
 package com.saathi.eHostel.service;
 
-
+import com.saathi.eHostel.dto.AuthenticateDTO;
+import com.saathi.eHostel.dto.AuthenticateResponseDTO;
 import com.saathi.eHostel.dto.WardenDTO;
 import com.saathi.eHostel.entity.Warden;
 import com.saathi.eHostel.mappers.WardenMapper;
 import com.saathi.eHostel.repository.WardenRepository;
 import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class WardenService implements IWardenService {
-
     private final WardenRepository wardenRepository;
 
     public WardenService(WardenRepository wardenRepository) {
         this.wardenRepository = wardenRepository;
     }
 
+    @Override
+    public AuthenticateResponseDTO authenticateWarden(AuthenticateDTO dto) throws Exception {
+        Warden wardenEntity = wardenRepository.findByEmail(dto.getEmail());
+        if (wardenEntity == null) {
+            return AuthenticateResponseDTO.builder()
+                    .message("User not found.")
+                    .userId(0L)
+                    .isCorrectPass(false)
+                    .userType("warden")
+                    .build();
+        }
+        if (wardenEntity.getPassword().equals(dto.getPassword())) {
+            return AuthenticateResponseDTO.builder()
+                    .message("User Logged in Successfully.")
+                    .userId(wardenEntity.getId())
+                    .isCorrectPass(true)
+                    .userType("warden")
+                    .build();
+        }
+        return AuthenticateResponseDTO.builder()
+                .message("Invalid Password for user " + wardenEntity.getEmail() + ".")
+                .userId(wardenEntity.getId())
+                .isCorrectPass(false)
+                .userType("warden")
+                .build();
+    }
 
     @Override
     public WardenDTO addWarden(WardenDTO wardenDTO) throws Exception {
@@ -29,12 +54,10 @@ public class WardenService implements IWardenService {
         return savedToDto;
     }
 
-
     @Override
     public List<WardenDTO> getAllWardens() throws IOException {
         List<Warden> allWardenEntities = wardenRepository.findAll();
         List<WardenDTO> entitiesToDto = new ArrayList<>();
-
         for (int i = 0; i < allWardenEntities.size(); i++) {
             Warden w = allWardenEntities.get(i);
             WardenDTO converted = WardenMapper.toDTO(w);
@@ -43,7 +66,6 @@ public class WardenService implements IWardenService {
         return entitiesToDto;
     }
 
-
     @Override
     public WardenDTO getWardenById(Long id) throws Exception {
         Warden entity = wardenRepository.findById(id).orElse(null);
@@ -51,11 +73,9 @@ public class WardenService implements IWardenService {
         return dto;
     }
 
-
     @Override
     public WardenDTO deleteWarden(Long id) throws Exception {
         Warden entity = wardenRepository.findById(id).orElse(null);
-
         if (entity == null) {
             return null;
         }
@@ -64,4 +84,3 @@ public class WardenService implements IWardenService {
         return dto;
     }
 }
-

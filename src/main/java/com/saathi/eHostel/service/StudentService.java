@@ -22,7 +22,7 @@ public class StudentService implements IStudentService {
     @Override
     public AuthenticateResponseDTO authenticateStudent(AuthenticateDTO dto) throws Exception {
         Student studentEntity = studentRepository.findByEmail(dto.getEmail());
-        if(studentEntity == null) {
+        if (studentEntity == null) {
             return AuthenticateResponseDTO.builder()
                     .message("User not found.")
                     .userId(0L)
@@ -30,7 +30,7 @@ public class StudentService implements IStudentService {
                     .userType("student")
                     .build();
         }
-        if(studentEntity.getPassword().equals(dto.getPassword())) {
+        if (studentEntity.getPassword().equals(dto.getPassword())) {
             return AuthenticateResponseDTO.builder()
                     .message("User Logged in Successfully.")
                     .userId(studentEntity.getId())
@@ -66,7 +66,7 @@ public class StudentService implements IStudentService {
         // return the List of studentDTO
         List<Student> allStudentEntities = studentRepository.findAll(); // A. B. C
         List<StudentDTO> entitiesToDto = new ArrayList<>();
-        for(int i = 0; i < allStudentEntities.size(); i++) {
+        for (int i = 0; i < allStudentEntities.size(); i++) {
             Student s = allStudentEntities.get(i); //A entity
             StudentDTO converted = StudentMapper.toDTO(s); // A dto
             entitiesToDto.add(converted);
@@ -87,7 +87,7 @@ public class StudentService implements IStudentService {
     @Override
     public StudentDTO deleteStudent(Long id) throws Exception {
         Student entity = studentRepository.findById(id).orElse(null); // 1,2, ,4
-        if(entity == null) {
+        if (entity == null) {
             return null;
         }
         StudentDTO dto = StudentMapper.toDTO(entity);

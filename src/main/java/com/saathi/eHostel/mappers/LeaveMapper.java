@@ -4,11 +4,8 @@ import com.saathi.eHostel.dto.LeaveDTO;
 import com.saathi.eHostel.entity.Leave;
 
 public class LeaveMapper {
-
     public static LeaveDTO toDTO(Leave leave) {
-        if (leave == null) {
-            return null;
-        }
+        if (leave == null) return null;
 
         return LeaveDTO.builder()
                 .id(leave.getId())
@@ -23,21 +20,19 @@ public class LeaveMapper {
                 .build();
     }
 
-    public static Leave toEntity(LeaveDTO dto) {
-        if (dto == null) {
-            return null;
-        }
+    public static Leave toEntity(LeaveDTO leaveDTO) {
+        if (leaveDTO == null) return null;
 
         return Leave.builder()
-                .id(dto.getId())
-                .studentCollegeRegistrationNo(dto.getStudentCollegeRegistrationNo())
-                .fromDate(dto.getFromDate())
-                .toDate(dto.getToDate())
-                .reason(dto.getReason())
-                .status(dto.getStatus())
-                .approvedByWarden(dto.getApprovedByWarden())
-                .approvedByTeacher(dto.getApprovedByTeacher())
-                .appliedDate(dto.getAppliedDate())
+//                .id(leaveDTO.getId())
+                .studentCollegeRegistrationNo(leaveDTO.getStudentCollegeRegistrationNo())
+                .fromDate(leaveDTO.getFromDate())
+                .toDate(leaveDTO.getToDate())
+                .reason(leaveDTO.getReason())
+                .status(leaveDTO.getStatus())
+                .approvedByWarden(leaveDTO.getApprovedByWarden())
+                .approvedByTeacher(leaveDTO.getApprovedByTeacher())
+                .appliedDate(leaveDTO.getAppliedDate())
                 .build();
     }
 }
