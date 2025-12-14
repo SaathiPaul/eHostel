@@ -21,7 +21,29 @@ public class StudentService implements IStudentService {
 
     @Override
     public AuthenticateResponseDTO authenticateStudent(AuthenticateDTO dto) throws Exception {
-
+        Student studentEntity = studentRepository.findByEmail(dto.getEmail());
+        if(studentEntity == null) {
+            return AuthenticateResponseDTO.builder()
+                    .message("User not found.")
+                    .userId(0L)
+                    .isCorrectPass(false)
+                    .userType("student")
+                    .build();
+        }
+        if(studentEntity.getPassword().equals(dto.getPassword())) {
+            return AuthenticateResponseDTO.builder()
+                    .message("User Logged in Successfully.")
+                    .userId(studentEntity.getId())
+                    .isCorrectPass(true)
+                    .userType("student")
+                    .build();
+        }
+        return AuthenticateResponseDTO.builder()
+                .message("Invalid Password for user " + studentEntity.getEmail() + ".")
+                .userId(studentEntity.getId())
+                .isCorrectPass(false)
+                .userType("student")
+                .build();
     }
 
     @Override

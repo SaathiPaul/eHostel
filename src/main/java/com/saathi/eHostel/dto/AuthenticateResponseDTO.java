@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AuthenticateResponseDTO {
+    private String message;
     private boolean isCorrectPass;
     public String userType;
     public Long userId;
