@@ -1,8 +1,12 @@
 package com.saathi.eHostel.service;
 
 import com.saathi.eHostel.dto.ComplaintDTO;
+import com.saathi.eHostel.dto.StudentDTO;
+import com.saathi.eHostel.entity.Complaint;
+import com.saathi.eHostel.mappers.ComplaintMapper;
 import com.saathi.eHostel.repository.ComplaintRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,11 +20,23 @@ public class ComplaintService implements IComplaintService {
 
     @Override
     public ComplaintDTO createComplaint(ComplaintDTO complaintDTO) throws Exception {
-        return null;
+        Complaint entityToSave = ComplaintMapper.toEntity(complaintDTO);
+        Complaint saved = complaintRepository.save(entityToSave);
+        ComplaintDTO savedToDTO = ComplaintMapper.toDTO(saved);
+        return savedToDTO;
     }
 
     @Override
     public List<ComplaintDTO> getAllComplaint() throws Exception {
-        return List.of();
+        List<Complaint> allComplaintEntities = complaintRepository.findAll();
+        List<ComplaintDTO> entitiesToDTO = new ArrayList<>();
+        for(int i=0 ; i<allComplaintEntities.size() ; i++)
+        {
+            Complaint c = allComplaintEntities.get(i);
+            ComplaintDTO converted = ComplaintMapper.toDTO(c);
+            entitiesToDTO.add(converted);
+        }
+        return entitiesToDTO;
+
     }
 }

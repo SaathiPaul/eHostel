@@ -5,8 +5,6 @@ import com.saathi.eHostel.entity.Leave;
 
 public class LeaveMapper {
 
-    private LeaveMapper() {}
-
     public static LeaveDTO toDTO(Leave leave) {
         if (leave == null) {
             return null;
