@@ -1,5 +1,7 @@
 package com.saathi.eHostel.controller;
 
+import com.saathi.eHostel.dto.AuthenticateDTO;
+import com.saathi.eHostel.dto.AuthenticateResponseDTO;
 import com.saathi.eHostel.dto.StudentDTO;
 import com.saathi.eHostel.service.IStudentService;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,11 @@ public class StudentController {
         // the service layer will return you back a DTO
         StudentDTO dto = studentService.addStudent(studentDTO);
         return dto;
+    }
+
+    @PostMapping
+    public AuthenticateResponseDTO authenticateStudent(@RequestBody AuthenticateDTO dto) throws Exception {
+        return studentService.authenticateStudent(dto);
     }
 
     // Get All Students

@@ -7,12 +7,11 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class TeacherDTO {
     private Long id;
     private String name;
     private String department;
     private String email;
     private String phone;
-
+    private String password;
 }

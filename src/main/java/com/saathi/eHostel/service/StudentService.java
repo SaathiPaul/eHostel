@@ -1,5 +1,7 @@
 package com.saathi.eHostel.service;
 
+import com.saathi.eHostel.dto.AuthenticateDTO;
+import com.saathi.eHostel.dto.AuthenticateResponseDTO;
 import com.saathi.eHostel.dto.StudentDTO;
 import com.saathi.eHostel.entity.Student;
 import com.saathi.eHostel.mappers.StudentMapper;
@@ -15,6 +17,11 @@ public class StudentService implements IStudentService {
 
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
+    }
+
+    @Override
+    public AuthenticateResponseDTO authenticateStudent(AuthenticateDTO dto) throws Exception {
+
     }
 
     @Override

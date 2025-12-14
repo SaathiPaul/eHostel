@@ -4,17 +4,17 @@ import com.saathi.eHostel.dto.LeaveDTO;
 import java.util.List;
 
 public interface ILeaveService {
-    LeaveDTO applyLeave(LeaveDTO leaveDTO);
+    public LeaveDTO applyLeave(LeaveDTO leaveDTO) throws Exception;
 
-    List<LeaveDTO> getAllLeaves();
+    List<LeaveDTO> getAllLeaves() throws Exception;
 
-    List<LeaveDTO> getLeavesByStudentId(Long studentId);
+    List<LeaveDTO> getLeavesByStudentId(Long studentId) throws Exception;
 
-    LeaveDTO getLeaveById(Long leaveId);
+    LeaveDTO getLeaveById(Long leaveId) throws Exception;
 
-    LeaveDTO approveLeaveByWarden(Long leaveId, Long wardenId);
+    LeaveDTO approveLeaveByWarden(Long leaveId, Long wardenId) throws Exception;
 
-    LeaveDTO approveLeaveByTeacher(Long leaveId, Long teacherId);
+    LeaveDTO approveLeaveByTeacher(Long leaveId, Long teacherId) throws Exception;
 
-    boolean deleteLeave(Long leaveId);
+    boolean deleteLeave(Long leaveId) throws Exception;
 }

@@ -1,5 +1,7 @@
 package com.saathi.eHostel.service;
 
+import com.saathi.eHostel.dto.AuthenticateDTO;
+import com.saathi.eHostel.dto.AuthenticateResponseDTO;
 import com.saathi.eHostel.dto.StudentDTO;
 import jdk.jfr.Category;
 
@@ -14,4 +16,6 @@ public interface IStudentService {
     StudentDTO getStudentById(Long id) throws Exception;
 
     StudentDTO deleteStudent(Long id) throws Exception;
+
+    AuthenticateResponseDTO authenticateStudent(AuthenticateDTO dto) throws Exception;
 }

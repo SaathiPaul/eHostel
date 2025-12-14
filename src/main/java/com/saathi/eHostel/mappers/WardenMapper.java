@@ -12,6 +12,7 @@ public class WardenMapper {
                 .email(warden.getEmail())
                 .phone(warden.getPhone())
                 .name(warden.getName())
+                .password(warden.getPassword())
                 .build();
     }
 
@@ -22,6 +23,7 @@ public class WardenMapper {
                // .id(wardenDTO.getId())
                 .email(wardenDTO.getEmail())
                 .phone(wardenDTO.getPhone())
+                .password(wardenDTO.getPassword())
                 .build();
     }
 }

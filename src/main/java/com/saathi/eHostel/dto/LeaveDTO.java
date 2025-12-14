@@ -12,9 +12,8 @@ import java.time.LocalDate;
 @Builder
 
 public class LeaveDTO {
-    private long id;
-    private long studentCollegeRegistrationNo;
-    private long studentUniversityRollNo;
+    private Long id;
+    private Long studentCollegeRegistrationNo;
 
     private LocalDate fromDate;
     private LocalDate toDate;
@@ -23,8 +22,8 @@ public class LeaveDTO {
 
     private String status;
 
-    private long approvedByWarden;
-    private long approvedByTeacher;
+    private Long approvedByWarden;
+    private Long approvedByTeacher;
 
     private LocalDate appliedDate;
 }
