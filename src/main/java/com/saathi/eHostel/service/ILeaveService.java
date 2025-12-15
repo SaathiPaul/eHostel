@@ -14,7 +14,7 @@ public interface ILeaveService {
 
     List<LeaveDTO> getLeavesByStudentId(Long studentId) throws Exception;
 
-    LeaveDTO approveLeaveByWarden(Long leaveId, Long wardenId) throws Exception;
+    LeaveDTO updateLeaveStatusByWarden(Long leaveId, Long wardenId, boolean isApproved) throws Exception;
 
-    LeaveDTO approveLeaveByTeacher(Long leaveId, Long teacherId) throws Exception;
+    LeaveDTO updateLeaveStatusByTeacher(Long leaveId, Long teacherId, boolean isApproved) throws Exception;
 }

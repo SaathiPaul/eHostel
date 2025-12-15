@@ -24,3 +24,12 @@ public class Leave {
     private Long approvedByTeacher;
     private LocalDate appliedDate;
 }
+
+/*
+*
+*    --- All possible statuses ---
+* // Applied -> APPROVED BY TEACHER -> APPROVED BY WARDEN --> [GRANTED]
+* // Applied -> APPROVED BY TEACHER -> REJECTED BY WARDEN --> [DENIED]
+* // Applied -> REJECTED BY TEACHER --> [DENIED]
+*
+*/
