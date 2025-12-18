@@ -48,6 +48,13 @@ public class StudentController {
         return studentDTO;
     }
 
+    // Get Student By College ID
+    @GetMapping("/cldId/{id}")
+    public StudentDTO getStudentByCollegeId(@PathVariable String clgId) throws Exception { // 1,2,3, null
+        StudentDTO studentDTO = studentService.getStudentByCollegeId(clgId);
+        return studentDTO;
+    }
+
     // Delete Student
     @DeleteMapping("/{id}")
     public String deleteStudent(@PathVariable Long id) throws Exception {

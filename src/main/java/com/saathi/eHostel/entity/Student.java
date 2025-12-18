@@ -15,10 +15,10 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String registrationNumber;
-    private String department;
     private String email;
     private String phone;
+    private String registrationNumber;
+    private String department;
     private String guardianPhone;
     private String roomNumber;
     private String password;

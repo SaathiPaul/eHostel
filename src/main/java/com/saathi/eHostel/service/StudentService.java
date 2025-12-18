@@ -20,6 +20,12 @@ public class StudentService implements IStudentService {
     }
 
     @Override
+    public StudentDTO getStudentByCollegeId(String clgId) throws Exception {
+        Student studentEntity = studentRepository.findByRegistrationNumber(clgId);
+        return StudentMapper.toDTO(studentEntity);
+    }
+
+    @Override
     public AuthenticateResponseDTO authenticateStudent(AuthenticateDTO dto) throws Exception {
         Student studentEntity = studentRepository.findByEmail(dto.getEmail());
         if (studentEntity == null) {

@@ -16,4 +16,6 @@ public interface IStudentService {
     StudentDTO deleteStudent(Long id) throws Exception;
 
     AuthenticateResponseDTO authenticateStudent(AuthenticateDTO dto) throws Exception;
+
+    StudentDTO getStudentByCollegeId(String clgId) throws Exception;
 }
