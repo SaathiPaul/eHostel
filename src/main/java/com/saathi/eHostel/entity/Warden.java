@@ -2,6 +2,8 @@ package com.saathi.eHostel.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,4 +20,7 @@ public class Warden {
     private String email;
     private String phone;
     private String password;
+
+    @OneToMany(mappedBy = "createdByWarden", fetch = FetchType.LAZY)
+    private List<Notice> notices = new ArrayList<>();
 }

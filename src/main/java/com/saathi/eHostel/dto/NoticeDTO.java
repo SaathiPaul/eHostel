@@ -1,8 +1,6 @@
 package com.saathi.eHostel.dto;
 
-
 import lombok.*;
-
 import java.time.LocalDateTime;
 
 @Getter
@@ -16,7 +14,6 @@ public class NoticeDTO {
     private String title;
     private String body;
     private Long createdByWardenId;
-
 }
 
 //id

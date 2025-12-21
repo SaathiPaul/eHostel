@@ -1,7 +1,6 @@
 package com.saathi.eHostel.service;
 
 import com.saathi.eHostel.dto.NoticeDTO;
-
 import java.util.List;
 
 public interface INoticeService {
@@ -13,4 +12,5 @@ public interface INoticeService {
     NoticeDTO getNoticeById(Long noticeId) throws Exception;
 
     void deleteNotice(Long noticeId) throws Exception;
+
 }
